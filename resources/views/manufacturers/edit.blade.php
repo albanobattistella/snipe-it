@@ -75,6 +75,7 @@
             :$errors
             name="notes"
             type="textarea"
+            maxlength="65000"
     />
 
 
