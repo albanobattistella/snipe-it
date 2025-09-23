@@ -10,30 +10,73 @@
 {{-- Page content --}}
 @section('inputFields')
 
-@include ('partials.forms.edit.name', ['translated_name' => trans('admin/suppliers/table.name')])
-@include ('partials.forms.edit.address')
+    <!-- Name -->
+    <x-form-row
+            :label="trans('general.name')"
+            :$item
+            :$errors
+            name="name"
+    />
 
-<div class="form-group {{ $errors->has('contact') ? ' has-error' : '' }}">
-    <label for="contact" class="col-md-3 control-label">{{ trans('admin/suppliers/table.contact') }}</label>
-    <div class="col-md-7">
-        <input class="form-control" name="contact" type="text" id="contact" value="{{ old('contact', $item->contact) }}">
-        {!! $errors->first('contact', '<span class="alert-msg" aria-hidden="true"><i class="fas fa-times" aria-hidden="true"></i> :message</span>') !!}
-    </div>
-</div>
+    @include ('partials.forms.edit.address')
 
-@include ('partials.forms.edit.phone')
-@include ('partials.forms.edit.fax')
-@include ('partials.forms.edit.email')
+    <!-- Contact -->
+    <x-form-row
+            :label="trans('admin/suppliers/table.contact')"
+            :$item
+            :$errors
+            name="contact"
+    />
 
-<div class="form-group {{ $errors->has('url') ? ' has-error' : '' }}">
-    <label for="url" class="col-md-3 control-label">{{ trans('general.url') }}</label>
-    <div class="col-md-7">
-        <input class="form-control" name="url" type="url" id="url" value="{{ old('url', $item->url) }}">
-        {!! $errors->first('url', '<span class="alert-msg" aria-hidden="true"><i class="fas fa-times" aria-hidden="true"></i> :message</span>') !!}
-    </div>
-</div>
 
-@include ('partials.forms.edit.notes')
-@include ('partials.forms.edit.image-upload', ['image_path' => app('suppliers_upload_path')])
+    <!-- Phone -->
+    <x-form-row
+            :label="trans('general.phone')"
+            :$item
+            :$errors
+            name="phone"
+            type="tel"
+    />
+
+    <!-- Fax -->
+    <x-form-row
+            :label="trans('general.fax')"
+            :$item
+            :$errors
+            name="fax"
+            type="tel"
+    />
+
+    <!-- Email -->
+    <x-form-row
+            :label="trans('general.email')"
+            :$item
+            :$errors
+            name="email"
+            type="email"
+    />
+
+    <!-- URL -->
+    <x-form-row
+            :label="trans('general.url')"
+            :$item
+            :$errors
+            name="url"
+            type="url"
+    />
+
+    @include ('partials.forms.edit.image-upload', ['image_path' => app('suppliers_upload_path')])
+
+    <!-- Notes -->
+    <x-form-row
+            :label="trans('general.notes')"
+            :$item
+            :$errors
+            name="notes"
+            type="textarea"
+            maxlength="65000"
+            placeholder="{{ trans('general.placeholders.notes') }}"
+    />
+
 
 @stop
