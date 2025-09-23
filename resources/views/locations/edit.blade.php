@@ -9,7 +9,14 @@
 
 {{-- Page content --}}
 @section('inputFields')
-@include ('partials.forms.edit.name', ['translated_name' => trans('admin/locations/table.name')])
+
+    <!-- Name -->
+    <x-form-row
+            :label="trans('general.name')"
+            :$item
+            :$errors
+            name="name"
+    />
 
 <!-- parent -->
 @include ('partials.forms.edit.location-select', ['translated_name' => trans('admin/locations/table.parent'), 'fieldname' => 'parent_id'])
@@ -20,25 +27,33 @@
 <!-- Company -->
 @include ('partials.forms.edit.company-select', ['translated_name' => trans('general.company'), 'fieldname' => 'company_id'])
 
-@include ('partials.forms.edit.phone')
-@include ('partials.forms.edit.fax')
+    <!-- Phone -->
+    <x-form-row
+            :label="trans('general.phone')"
+            :$item
+            :$errors
+            name="phone"
+            type="tel"
+    />
 
-<!-- Currency -->
-<div class="form-group {{ $errors->has('currency') ? ' has-error' : '' }}">
-    <label for="currency" class="col-md-3 control-label">
-        {{ trans('admin/locations/table.currency') }}
-    </label>
-    <div class="col-md-7">
-        <input class="form-control" style="width:100px" type="text" name="currency" aria-label="currency" id="currency" value="{{ old('currency', $item->currency) }}"{!!  (Helper::checkIfRequired($item, 'currency')) ? ' required' : '' !!} maxlength="3" />
-        @error('currency')
-        <span class="alert-msg">
-            <x-icon type="x" />
-            {{ $message }}
-        </span>
-        @enderror
+    <!-- Fax -->
+    <x-form-row
+            :label="trans('general.fax')"
+            :$item
+            :$errors
+            name="fax"
+            type="tel"
+    />
 
-    </div>
-</div>
+    <!-- Currency -->
+    <x-form-row
+            :label="trans('admin/locations/table.currency')"
+            :$item
+            :$errors
+            name="currency"
+            maxlength="3"
+            input_div_class="col-md-2 col-sm-6 col-xs-6"
+    />
 
 @include ('partials.forms.edit.address')
 
@@ -61,22 +76,18 @@
 @endif
 
 
-@include ('partials.forms.edit.image-upload', ['image_path' => app('locations_upload_path')])
+    @include ('partials.forms.edit.image-upload', ['image_path' => app('locations_upload_path')])
 
-<div class="form-group{!! $errors->has('notes') ? ' has-error' : '' !!}">
-    <label for="notes" class="col-md-3 control-label">{{ trans('general.notes') }}</label>
-    <div class="col-md-8">
-        <x-input.textarea
-                name="notes"
-                id="notes"
-                :value="old('notes', $item->notes)"
-                placeholder="{{ trans('general.placeholders.notes') }}"
-                aria-label="notes"
-                rows="5"
-        />
-        {!! $errors->first('notes', '<span class="alert-msg" aria-hidden="true"><i class="fas fa-times" aria-hidden="true"></i> :message</span>') !!}
-    </div>
-</div>
+    <!-- Notes -->
+    <x-form-row
+            :label="trans('general.notes')"
+            :$item
+            :$errors
+            name="notes"
+            type="textarea"
+            maxlength="65000"
+            placeholder="{{ trans('general.placeholders.notes') }}"
+    />
 
 @stop
 
