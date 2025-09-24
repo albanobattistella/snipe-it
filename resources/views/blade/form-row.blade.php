@@ -33,7 +33,7 @@
     </x-form-label>
     
 
-    <div {{ $attributes->merge(['class' => $input_div_class]) }} {{ ($div_style) ? $attributes->merge(['style' => $div_style]):'' }}>
+    <div {{ $attributes->merge(['class' => $input_div_class, 'style' => $div_style]) }} >
 
         @php
             $blade_type = in_array($type, ['text', 'email', 'url', 'tel', 'number', 'password']) ? 'text' : $type;
