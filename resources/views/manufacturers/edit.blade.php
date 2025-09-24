@@ -14,7 +14,6 @@
     <x-form-row
             :label="trans('admin/manufacturers/table.name')"
             :$item
-            :$errors
             name="name"
     />
 
@@ -22,7 +21,6 @@
     <x-form-row
             :label="trans('general.url')"
             :$item
-            :$errors
             name="url"
             type="url"
     />
@@ -31,7 +29,6 @@
     <x-form-row
             :label="trans('admin/manufacturers/table.support_url')"
             :$item
-            :$errors
             name="support_url"
             type="url"
     />
@@ -40,7 +37,6 @@
     <x-form-row
             :label="trans('admin/manufacturers/table.warranty_lookup_url')"
             :$item
-            :$errors
             help_text="{!! trans('admin/manufacturers/message.support_url_help') !!}"
             name="warranty_lookup_url"
             type="url"
@@ -50,7 +46,6 @@
     <x-form-row
             :label="trans('admin/manufacturers/table.support_phone')"
             :$item
-            :$errors
             name="support_phone"
             type="tel"
     />
@@ -59,7 +54,6 @@
     <x-form-row
             :label="trans('admin/manufacturers/table.support_email')"
             :$item
-            :$errors
             name="support_email"
             type="email"
             input_div_class="col-md-6 col-sm-12 col-xs-12"
@@ -72,7 +66,6 @@
     <x-form-row
             :label="trans('general.notes')"
             :$item
-            :$errors
             name="notes"
             type="textarea"
             maxlength="65000"

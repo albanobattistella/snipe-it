@@ -20,7 +20,6 @@
     <x-form-row
             :label="trans('general.name')"
             :$item
-            :$errors
             name="name"
     />
 
@@ -29,7 +28,6 @@
     <x-form-row
             :label="trans('general.quantity')"
             :$item
-            :$errors
             name="qty"
             input_div_class="col-md-2"
             minlength="1"
@@ -42,7 +40,6 @@
     <x-form-row
             :label="trans('general.min_amt')"
             :$item
-            :$errors
             name="min_amt"
             input_div_class="col-md-2"
             minlength="1"
@@ -54,7 +51,6 @@
     <x-form-row
             :label="trans('admin/hardware/form.serial')"
             :$item
-            :$errors
             name="serial"
             type="text"
     />
@@ -65,7 +61,6 @@
     <x-form-row
             :label="trans('general.model_no')"
             :$item
-            :$errors
             name="model_number"
             input_div_class="col-md-5 col-sm-12"
     />
@@ -78,7 +73,6 @@
     <x-form-row
             :label="trans('general.order_number')"
             :$item
-            :$errors
             name="order_number"
             input_div_class="col-md-5 col-sm-12"
     />
@@ -87,7 +81,6 @@
     <x-form-row
             :label="trans('general.purchase_date')"
             :$item
-            :$errors
             name="purchase_date"
             type="date"
             input_div_class="col-md-4 col-sm-12"
@@ -98,7 +91,6 @@
     <x-form-row
             :label="trans('general.unit_cost')"
             :$item
-            :$errors
             name="purchase_cost"
             type="number"
             maxlength="25"
@@ -112,12 +104,12 @@
     <x-form-row
             :label="trans('general.notes')"
             :$item
-            :$errors
             name="notes"
             type="textarea"
             maxlength="65000"
             placeholder="{{ trans('general.placeholders.notes') }}"
     />
+
 @include ('partials.forms.edit.image-upload', ['image_path' => app('components_upload_path')])
 
 

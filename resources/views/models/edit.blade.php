@@ -14,7 +14,6 @@
     <x-form-row
             :label="trans('general.name')"
             :$item
-            :$errors
             name="name"
     />
 
@@ -25,7 +24,6 @@
 <x-form-row
         :label="trans('general.model_no')"
         :$item
-        :$errors
         name="model_number"
 />
 
@@ -35,7 +33,6 @@
     <x-form-row
             :label="trans('general.min_amt')"
             :$item
-            :$errors
             name="min_amt"
             input_div_class="col-md-2"
             minlength="1"
@@ -90,7 +87,6 @@
     <x-form-row
             :label="trans('general.notes')"
             :$item
-            :$errors
             name="notes"
             type="textarea"
             maxlength="65000"

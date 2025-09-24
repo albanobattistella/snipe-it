@@ -25,12 +25,7 @@
                 <table
                 data-cookie-id-table="kitModelsTable"
                 data-columns="{{ \App\Presenters\PredefinedKitPresenter::dataTableModels() }}"
-
-
                 data-side-pagination="server"
-
-
-
                 data-sort-order="asc"
                 data-sort-name="name"
                 id="kitModelsTable"

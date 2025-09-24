@@ -12,7 +12,6 @@
     <x-form-row
             :label="trans('general.name')"
             :$item
-            :$errors
             name="name"
     />
 
@@ -20,7 +19,6 @@
     <x-form-row
             :label="trans('general.phone')"
             :$item
-            :$errors
             name="phone"
             type="tel"
     />
@@ -29,7 +27,6 @@
     <x-form-row
             :label="trans('general.fax')"
             :$item
-            :$errors
             name="fax"
             type="tel"
     />
@@ -38,7 +35,6 @@
     <x-form-row
             :label="trans('general.email')"
             :$item
-            :$errors
             name="fax"
             type="email"
     />
@@ -50,7 +46,6 @@
     <x-form-row
             :label="trans('general.notes')"
             :$item
-            :$errors
             name="notes"
             type="textarea"
             maxlength="65000"

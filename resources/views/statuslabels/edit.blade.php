@@ -23,7 +23,6 @@
     <x-form-row
             :label="trans('general.name')"
             :$item
-            :$errors
             name="name"
     />
 
@@ -61,7 +60,6 @@
     <x-form-row
             :label="trans('general.notes')"
             :$item
-            :$errors
             name="notes"
             type="textarea"
             maxlength="65000"
@@ -72,7 +70,6 @@
     <x-form-row-checkbox
             :label="trans('admin/statuslabels/table.show_in_nav')"
             :$item
-            :$errors
             :value_text="trans('general.yes')"
             name="show_in_nav"
             checkbox_value="1"
@@ -81,7 +78,6 @@
 <!-- Set as Default -->
     <x-form-row-checkbox
             :$item
-            :$errors
             :value_text="trans('general.yes')"
             name="default_label"
             checkbox_value="1"

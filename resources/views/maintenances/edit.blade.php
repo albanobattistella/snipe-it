@@ -43,7 +43,12 @@
 
       <div class="box-body">
 
-        @include ('partials.forms.edit.name', ['translated_name' => trans('general.name'), 'required' => 'true'])
+        <!-- Name -->
+        <x-form-row
+                :label="trans('general.name')"
+                :$item
+                name="name"
+        />
 
         <!-- This is a new maintenance -->
         @if (!$item->id)

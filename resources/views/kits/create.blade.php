@@ -6,5 +6,10 @@
 
 {{-- Page content --}}
 @section('inputFields')
-@include ('partials.forms.edit.name', ['translated_name' => trans('general.name')])
+    <!-- Name -->
+    <x-form-row
+            :label="trans('general.name')"
+            :$item
+            name="name"
+    />
 @stop

@@ -19,7 +19,6 @@
     <x-form-row
             :label="trans('general.name')"
             :$item
-            :$errors
             name="name"
     />
 
@@ -30,7 +29,6 @@
     <x-form-row
             :label="trans('admin/licenses/form.seats')"
             :$item
-            :$errors
             name="seats"
             input_div_class="col-md-2"
             minlength="1"
@@ -42,7 +40,6 @@
     <x-form-row
             :label="trans('general.min_amt')"
             :$item
-            :$errors
             name="seats"
             input_div_class="col-md-2"
             minlength="1"
@@ -56,7 +53,6 @@
         <x-form-row
                 :label="trans('admin/licenses/form.license_key')"
                 :$item
-                :$errors
                 name="serial"
                 type="textarea"
                 maxlength="65000"
@@ -71,7 +67,6 @@
     <x-form-row
             :label="trans('admin/licenses/form.to_name')"
             :$item
-            :$errors
             name="license_name"
     />
 
@@ -79,7 +74,6 @@
     <x-form-row
             :label="trans('admin/licenses/form.to_email')"
             :$item
-            :$errors
             name="license_email"
             type="email"
     />
@@ -88,7 +82,6 @@
     <x-form-row-checkbox
             :label="trans('admin/licenses/form.reassignable')"
             :$item
-            :$errors
             name="reassignable"
             checkbox_value="1"
             :value_text="trans('general.yes')"
@@ -100,7 +93,6 @@
     <x-form-row
             :label="trans('general.order_number')"
             :$item
-            :$errors
             name="order_number"
             input_div_class="col-md-5 col-sm-12"
     />
@@ -109,7 +101,6 @@
     <x-form-row
             :label="trans('admin/licenses/form.purchase_order')"
             :$item
-            :$errors
             name="purchase_order"
             input_div_class="col-md-5 col-sm-12"
     />
@@ -118,7 +109,6 @@
     <x-form-row
             :label="trans('general.purchase_cost')"
             :$item
-            :$errors
             name="purchase_cost"
             type="number"
             maxlength="25"
@@ -133,7 +123,6 @@
     <x-form-row
             :label="trans('general.purchase_date')"
             :$item
-            :$errors
             name="purchase_date"
             type="date"
             input_div_class="col-md-4 col-sm-12"
@@ -145,7 +134,6 @@
     <x-form-row
             :label="trans('admin/licenses/form.expiration')"
             :$item
-            :$errors
             name="expiration_date"
             type="date"
             input_div_class="col-md-4 col-sm-12"
@@ -157,7 +145,6 @@
     <x-form-row
             :label="trans('admin/licenses/form.termination_date')"
             :$item
-            :$errors
             name="termination_date"
             type="date"
             input_div_class="col-md-4 col-sm-12"
@@ -171,7 +158,6 @@
     <x-form-row-checkbox
             :label="trans('admin/licenses/form.maintained')"
             :$item
-            :$errors
             :value_text="trans('general.yes')"
             name="maintained"
             checkbox_value="1"
@@ -182,7 +168,6 @@
     <x-form-row
             :label="trans('general.notes')"
             :$item
-            :$errors
             name="notes"
             type="textarea"
             maxlength="65000"

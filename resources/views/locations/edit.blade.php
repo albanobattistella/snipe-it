@@ -14,7 +14,6 @@
     <x-form-row
             :label="trans('general.name')"
             :$item
-            :$errors
             name="name"
     />
 
@@ -31,7 +30,6 @@
     <x-form-row
             :label="trans('general.phone')"
             :$item
-            :$errors
             name="phone"
             type="tel"
     />
@@ -40,7 +38,6 @@
     <x-form-row
             :label="trans('general.fax')"
             :$item
-            :$errors
             name="fax"
             type="tel"
     />
@@ -49,7 +46,6 @@
     <x-form-row
             :label="trans('admin/locations/table.currency')"
             :$item
-            :$errors
             name="currency"
             maxlength="3"
             input_div_class="col-md-2 col-sm-6 col-xs-6"
@@ -82,7 +78,6 @@
     <x-form-row
             :label="trans('general.notes')"
             :$item
-            :$errors
             name="notes"
             type="textarea"
             maxlength="65000"
