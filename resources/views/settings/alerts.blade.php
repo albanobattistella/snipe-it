@@ -90,23 +90,6 @@
                             />
 
                             <!-- Always CC Admins -->
-                            <!-- TODO - this doesn't work as expected -->
-                            <x-form-row
-                                    :item="$setting"
-                                    type="radio"
-                                    name="admin_cc_always"
-                                    value="1"
-                                    :value_text="trans('admin/settings/general.admin_cc_always')"
-                            />
-
-                            <x-form-row
-                                    :item="$setting"
-                                    type="radio"
-                                    name="admin_cc_always"
-                                    value="0"
-                                    :value_text="trans('admin/settings/general.admin_cc_when_acceptance_required')"
-                            />
-
                             <div class="form-group">
                                 <div class="col-md-9 col-md-offset-3">
                                     <label class="form-control">
