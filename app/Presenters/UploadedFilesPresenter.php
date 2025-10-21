@@ -12,7 +12,7 @@ class UploadedFilesPresenter extends Presenter
      *
      * @return string
      */
-    public static function dataTableLayout()
+    public static function dataTableLayout($allow_deletes = true)
     {
 
         $layout = [
@@ -84,7 +84,11 @@ class UploadedFilesPresenter extends Presenter
                 'title' => trans('general.created_at'),
                 'visible' => true,
                 'formatter' => 'dateDisplayFormatter',
-            ], [
+            ],
+        ];
+
+        if ($allow_deletes == 'true') {
+            $layout[] = [
                 'field' => 'available_actions',
                 'searchable' => false,
                 'sortable' => false,
@@ -92,8 +96,8 @@ class UploadedFilesPresenter extends Presenter
                 'title' => trans('table.actions'),
                 'visible' => true,
                 'formatter' => 'deleteUploadFormatter',
-            ],
-        ];
+            ];
+        }
 
         return json_encode($layout);
     }

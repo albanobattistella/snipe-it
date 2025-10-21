@@ -2,12 +2,14 @@
 @props([
     'object',
     'object_type' => '',
+    'action_type' => null,
+    'allow_deletes' => true,
 ])
 
 <!-- begin non-ajaxed file listing table -->
 <div class="table-responsive">
     <table
-            data-columns="{{ \App\Presenters\UploadedFilesPresenter::dataTableLayout() }}"
+            data-columns="{{ \App\Presenters\UploadedFilesPresenter::dataTableLayout($allow_deletes) }}"
             data-cookie-id-table="{{ $object_type }}-FileUploadsTable"
             data-id-table="{{ $object_type }}-FileUploadsTable"
             id="{{ $object_type }}-FileUploadsTable"
@@ -18,7 +20,11 @@
             data-show-custom-view="true"
             data-custom-view="customViewFormatter"
             data-show-custom-view-button="true"
-            data-url="{{ route('api.files.index', ['object_type' => $object_type, 'id' => $object->id]) }}"
+            data-url="{{ route('api.files.index', [
+                    'object_type' => $object_type,
+                    'id' => $object->id,
+                    'action_type' => $action_type]
+                    ) }}"
             class="table table-striped snipe-table"
             data-export-options='{
                     "fileName": "export-uploads-{{ str_slug($object->name) }}-{{ date('Y-m-d') }}",

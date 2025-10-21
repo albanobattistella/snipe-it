@@ -466,8 +466,6 @@ class Actionlog extends SnipeModel
     public function uploads_file_url()
     {
 
-
-
         if (($this->action_type == 'accepted') || ($this->action_type == 'declined')) {
             return route('log.storedeula.download', ['filename' => $this->filename]);
         }
@@ -476,6 +474,11 @@ class Actionlog extends SnipeModel
 
         if ($object == 'asset_models') {
             $object = 'models';
+        }
+
+        // @todo - remove audit special case when audits have their own file handling route
+        if ($this->action_type == 'audit') {
+            $object = 'audits';
         }
 
         return route('ui.files.show', [

@@ -51,13 +51,20 @@ class UploadedFilesController extends Controller
             ];
 
 
-        $uploads = self::$map_object_type[$object_type]::withTrashed()->find($id)->uploads()
-            ->with('adminuser');
+        if (($request->filled('action_type') && ($request->input('action_type') == 'audit'))) {
+            $uploads = self::$map_object_type[$object_type]::withTrashed()->find($id)->audits()
+                ->with('adminuser');
+        } else {
+            $uploads = self::$map_object_type[$object_type]::withTrashed()->find($id)->uploads()
+                ->with('adminuser');
+        }
+
 
         $offset = ($request->input('offset') > $uploads->count()) ? $uploads->count() : abs($request->input('offset'));
         $limit = app('api_limit_value');
         $order = $request->input('order') === 'asc' ? 'asc' : 'desc';
         $sort = in_array($request->input('sort'), $allowed_columns) ? $request->input('sort') : 'created_at';
+
 
         // Text search on action_logs fields
         // We could use the normal Actionlogs text scope, but it's a very heavy query since it's searching across all relations
