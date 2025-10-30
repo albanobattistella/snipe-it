@@ -33,109 +33,145 @@
         @if ($item->id)
 
           @if ($item->asset)
-            <x-form-row :label="trans('general.asset')" name="asset">
-                {{ $item->asset->display_name }}
-            </x-form-row>
+              <x-form-row>
+
+                      <x-form-label>{{ trans('general.asset') }}</x-form-label>
+
+                      <x-form-input>
+                          <x-input.static>
+                                {{ $item->asset->display_name }}
+                          </x-input.static>
+                      </x-form-input>
+
+              </x-form-row>
 
               @if ($item->asset->company)
-                  <x-form-row :label="trans('general.company')" name="company">
-                      {{ $item->asset->company->display_name }}
+                  <x-form-row>
+
+                          <x-form-label>{{ trans('general.company') }}</x-form-label>
+
+                          <x-form-input>
+                              <x-input.static>
+                                  {{ $item->asset->company->display_name }}
+                              </x-input.static>
+                          </x-form-input>
+
                   </x-form-row>
 
               @endif
 
-
               @if ($item->asset->location)
-                <x-form-row :label="trans('general.location')" name="location">
-                  {{ $item->asset->location->display_name }}
-                </x-form-row>
+                  <x-form-row>
+
+                          <x-form-label>
+                              {{ trans('general.location') }}
+                          </x-form-label>
+
+                          <x-form-input>
+                              <x-input.static>
+                                  {{ $item->asset->location->display_name }}
+                              </x-input.static>
+                          </x-form-input>
+
+                  </x-form-row>
               @endif
+
+
           @endif
 
         @endif
 
           <!-- Name -->
-          <x-form-row
-                  :label="trans('general.name')"
-                  :$item
-                  name="name"
-          />
+          <x-form-row>
+                  <x-form-label>{{ trans('general.name') }}</x-form-label>
+
+                  <x-form-input>
+                    <x-input.text
+                            name="name"
+                            :value="$item->name"
+                            required="true"
+                    />
+                  </x-form-input>
+
+          </x-form-row>
 
          @if (!$item->id)
-             <x-form-row
-                        :$item
-                        :data_placeholder="trans('general.select_asset')"
-                        :label="trans('general.assets')"
-                        :selected="$item->id ? $item->asset()->pluck('id')->toArray() : old('selected_assets')"
-                        data_endpoint="hardware"
-                        input_class="js-data-ajax select2"
-                        name="selected_assets[]"
-                        required="true"
-                        type="select2-ajax"
-                        multiple="true"
-                />
+
+              <x-form-row>
+                      <x-form-label>{{ trans('general.select_asset') }}</x-form-label>
+                      <x-form-input>
+                          <x-input.select2-ajax
+                                  name="selected_assets[]"
+                                  :value="$item->name"
+                                  required="true"
+                                  multiple="true"
+                                  data_endpoint="hardware"
+                                  :data_placeholder="trans('general.select_asset')"
+                          />
+                      </x-form-input>
+              </x-form-row>
          @endif
 
 
-        <x-form-row
-                :label="trans('admin/maintenances/form.asset_maintenance_type')"
-                :$item
-                name="asset_maintenance_type"
-                type="select"
-                input_style_override="width:100%;"
-                :input_options="$maintenanceType"
-                :input_selected="old('asset_maintenance_type', $item->asset_maintenance_type)"
-                includeEmpty="true"
-                data-placeholder="{{ trans('admin/maintenances/form.select_type')}}"
-        />
-
-
-
         <!--- Start Date -->
-        <x-form-row
-                :label="trans('admin/maintenances/form.start_date')"
-                :$item
-                name="start_date"
-                type="datepicker"
-                input_div_class="col-md-5"
-        />
+          <x-form-row>
+                  <x-form-label>{{ trans('admin/maintenances/form.start_date') }}</x-form-label>
+
+                  <x-form-input class="col-md-5">
+                      <x-input.datepicker
+                              name="start_date"
+                              :value="$item->start_date"
+                              required="true"
+                      />
+                  </x-form-input>
+          </x-form-row>
 
 
         <!--- Completion Date -->
-        <x-form-row
-                :label="trans('admin/maintenances/form.completion_date')"
-                :$item
-                name="completion_date"
-                type="datepicker"
-                input_div_class="col-md-5"
-        />
+          <x-form-row>
+                  <x-form-label>{{ trans('admin/maintenances/form.completion_date') }}</x-form-label>
+
+                  <x-form-input class="col-md-5">
+                      <x-input.datepicker
+                              name="start_date"
+                              :value="$item->completion_date"
+                              required="true"
+                      />
+                  </x-form-input>
+          </x-form-row>
 
         <!-- URL -->
-        <x-form-row
-                :label="trans('general.url')"
-                :$item
-                name="url"
-                type="url"
-                input_icon="link"
-                input_group_addon="left"
-                placeholder="https://example.com"
-        />
+          <x-form-row>
+                  <x-form-label>{{ trans('general.url') }}</x-form-label>
 
-          <x-form-row
-                  :$item
-                  :data_placeholder="trans('general.select_supplier')"
-                  :label="trans('general.supplier')"
-                  :selected="$item->id ? $item->supplier()->pluck('id')->toArray() : old('suppliers')"
-                  data_endpoint="suppliers"
-                  input_div_class="col-md-7"
-                  input_class="js-data-ajax select2"
-                  name="supplier_id"
-                  type="select2-ajax"
-                  show_create_new="supplier"
-          />
+                  <x-form-input>
+                      <x-input.text
+                              type="url"
+                              :value="$item->url"
+                              input_icon="link"
+                              input_group_addon="left"
+                              placeholder="https://example.com"
+                      />
+                  </x-form-input>
+          </x-form-row>
 
 
-        <!-- Warranty -->
+        <!-- Supplier -->
+          <x-form-row>
+
+                  <x-form-label>{{ trans('general.supplier') }}</x-form-label>
+
+                  <x-form-input>
+                      <x-input.select2-ajax
+                              name="supplier_id"
+                              :value="$item->supplier ? $item->supplier->id : old('supplier_id')"
+                              data_endpoint="suppliers"
+                              :data_placeholder="trans('general.select_supplier')"
+                      />
+                  </x-form-input>
+          </x-form-row>
+
+        <!-- Warranty? -->
         <div class="form-group">
           <div class="col-sm-offset-3 col-sm-9">
               <label class="form-control">
@@ -146,22 +182,25 @@
         </div>
 
 
-        <!-- Asset Maintenance Cost -->
-        <x-form-row
-                :label="trans('admin/maintenances/form.cost')"
-                :$item
-                name="cost"
-                type="number"
-                input_div_class="col-md-5"
-                input_min="0"
-                :input_group_text="$snipeSettings->default_currency"
-                input_group_addon="left"
-                maxlength="25"
-                input_max="99999999999999999.000"
-                input_min="0.00"
-                input_step="0.001"
-        />
+        <!-- Cost -->
+          <x-form-row>
+              <x-form-label>{{ trans('admin/maintenances/form.cost') }}</x-form-label>
 
+              <x-form-input class="col-md-5">
+                  <x-input.text
+                          :input_group_text="$snipeSettings->default_currency"
+                          :value="$item->cost"
+                          input_group_addon="left"
+                          input_max="99999999999999999.000"
+                          input_min="0"
+                          input_min="0.00"
+                          input_step="0.001"
+                          maxlength="25"
+                          name="cost"
+                  />
+              </x-form-input>
+
+          </x-form-row>
 
         @include ('partials.forms.edit.image-upload', ['image_path' => app('maintenances_path')])
 

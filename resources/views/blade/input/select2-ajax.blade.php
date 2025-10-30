@@ -7,7 +7,7 @@
 ])
 <select
         {{ ($multiple == 'true')? ' multiple' : '' }}
-        {{ $attributes->class(['select2', 'livewire-select2' => $forLivewire])->style(['width:100%']) }}
+        {{ $attributes->class(['js-data-ajax select2', 'livewire-select2' => $forLivewire])->style(['width:100%']) }}
         @if($forLivewire) data-livewire-component="{{ $this->getId() }}" @endif
         data-endpoint="{{ $data_endpoint }}"
         data-placeholder="{{ $data_placeholder }}"
