@@ -1,17 +1,24 @@
 <!-- form-row blade component -->
 @props([
-    'name' => null,
-    'type' => 'text',
-    'item' => null,
-    'info_tooltip_text' => null,
+    'errors_class' => ($errors->has($name) ? ' has-error' : null),
     'help_text' => null,
-    'label' => null,
+    'info_tooltip_text' => null,
     'input_div_class' => 'col-md-8',
-    'errors_class' => $errors->has('support_url') ? ' has-error' : '',
-    'input_icon' => null,
     'input_group_addon' => null,
-    'rows' => null,
+    'input_group_text' => null,
+    'input_icon' => null,
+    'input_options' => null,
+    'input_selected' => null,
+    'input_style_override' => false,
+    'item' => null,
+    'label' => null,
+    'min' => null,
+    'maxlength' => null,
+    'name' => null,
     'placeholder' => null,
+    'rows' => null,
+    'static_value' => null,
+    'type' => 'text',
 ])
 
 <div {{ $attributes->merge(['class' => 'form-group'. $errors_class]) }}>
@@ -37,8 +44,15 @@
                     :value="old($name, $item->{$name})"
                     :input_icon="$input_icon"
                     :input_group_addon="$input_group_addon"
+                    :input_group_text="$input_group_text"
                     :rows="$rows"
                     :placeholder="$placeholder"
+                    :options="$input_options"
+                    :selected="$input_selected"
+                    :style="$input_style_override"
+                    :maxlength="$maxlength"
+                    :min="$min"
+                    :static_value="$static_value"
 
             />
         </div>

@@ -10,7 +10,13 @@
 {{-- Page content --}}
 @section('inputFields')
 
-@include ('partials.forms.edit.name', ['translated_name' => trans('admin/suppliers/table.name')])
+    <!-- Name -->
+    <x-form-row
+            :label="trans('general.name')"
+            :$item
+            name="name"
+    />
+
 @include ('partials.forms.edit.address')
 
 <div class="form-group {{ $errors->has('contact') ? ' has-error' : '' }}">
@@ -33,7 +39,15 @@
     </div>
 </div>
 
-@include ('partials.forms.edit.notes')
+    <!-- Notes -->
+    <x-form-row
+            :label="trans('general.notes')"
+            :$item
+            name="notes"
+            type="textarea"
+            placeholder="{{ trans('general.placeholders.notes') }}"
+    />
+
 @include ('partials.forms.edit.image-upload', ['image_path' => app('suppliers_upload_path')])
 
 @stop

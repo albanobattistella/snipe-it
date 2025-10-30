@@ -13,7 +13,14 @@
 
 {{-- Page content --}}
 @section('inputFields')
-@include ('partials.forms.edit.name', ['translated_name' => trans('admin/licenses/form.name')])
+
+    <!-- Name -->
+    <x-form-row
+            :label="trans('general.name')"
+            :$item
+            name="name"
+    />
+
 @include ('partials.forms.edit.category-select', ['translated_name' => trans('admin/categories/general.category_name'), 'fieldname' => 'category_id', 'required' => 'true', 'category_type' => 'license'])
 
 
@@ -131,6 +138,13 @@
     </div>
 </div>
 
-@include ('partials.forms.edit.notes')
+    <!-- Notes -->
+    <x-form-row
+            :label="trans('general.notes')"
+            :$item
+            name="notes"
+            type="textarea"
+            placeholder="{{ trans('general.placeholders.notes') }}"
+    />
 
 @stop
