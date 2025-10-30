@@ -35,13 +35,13 @@
           @if ($item->asset)
               <x-form-row>
 
-                      <x-form-label>{{ trans('general.asset') }}</x-form-label>
+                  <x-form-label>{{ trans('general.asset') }}</x-form-label>
 
-                      <x-form-input>
-                          <x-input.static>
-                                {{ $item->asset->display_name }}
-                          </x-input.static>
-                      </x-form-input>
+                  <x-form-input>
+                      <x-input.static>
+                            {{ $item->asset->display_name }}
+                      </x-input.static>
+                  </x-form-input>
 
               </x-form-row>
 
@@ -63,19 +63,18 @@
               @if ($item->asset->location)
                   <x-form-row>
 
-                          <x-form-label>
-                              {{ trans('general.location') }}
-                          </x-form-label>
+                      <x-form-label>
+                          {{ trans('general.location') }}
+                      </x-form-label>
 
-                          <x-form-input>
-                              <x-input.static>
-                                  {{ $item->asset->location->display_name }}
-                              </x-input.static>
-                          </x-form-input>
+                      <x-form-input>
+                          <x-input.static>
+                              {{ $item->asset->location->display_name }}
+                          </x-input.static>
+                      </x-form-input>
 
                   </x-form-row>
               @endif
-
 
           @endif
 
@@ -83,34 +82,51 @@
 
           <!-- Name -->
           <x-form-row>
-                  <x-form-label>{{ trans('general.name') }}</x-form-label>
+              <x-form-label>{{ trans('general.name') }}</x-form-label>
 
-                  <x-form-input>
-                    <x-input.text
-                            name="name"
-                            :value="$item->name"
-                            required="true"
-                    />
-                  </x-form-input>
+              <x-form-input>
+                <x-input.text
+                    name="name"
+                    :value="$item->name"
+                    required="true"
+                />
+              </x-form-input>
 
           </x-form-row>
 
          @if (!$item->id)
 
-              <x-form-row>
-                      <x-form-label>{{ trans('general.select_asset') }}</x-form-label>
-                      <x-form-input>
-                          <x-input.select2-ajax
-                                  name="selected_assets[]"
-                                  :value="$item->name"
-                                  required="true"
-                                  multiple="true"
-                                  data_endpoint="hardware"
-                                  :data_placeholder="trans('general.select_asset')"
-                          />
-                      </x-form-input>
-              </x-form-row>
+          <x-form-row>
+                  <x-form-label>{{ trans('general.assets') }}</x-form-label>
+                  <x-form-input>
+                      <x-input.select2-ajax
+                          name="selected_assets[]"
+                          :value="$item->name"
+                          required="true"
+                          multiple="true"
+                          data_endpoint="hardware"
+                          :data_placeholder="trans('general.select_asset')"
+                      />
+                  </x-form-input>
+          </x-form-row>
          @endif
+
+        <!-- Maintenance Type -->
+          <x-form-row>
+              <x-form-label>{{ trans('admin/asset_maintenances/form.asset_maintenance_type') }}</x-form-label>
+              <x-form-input>
+                  <x-input.select
+                      name="asset_maintenance_type"
+                      :options="$maintenanceType"
+                      :selected="old('asset_maintenance_type', $item->asset_maintenance_type)"
+                      :required="Helper::checkIfRequired($item, 'asset_maintenance_type')"
+                      data-placeholder="{{ trans('admin/maintenances/form.select_type')}}"
+                      includeEmpty="true"
+                      style="width:100%;"
+                      aria-label="asset_maintenance_type"
+                  />
+              </x-form-input>
+          </x-form-row>
 
 
         <!--- Start Date -->
@@ -119,9 +135,9 @@
 
                   <x-form-input class="col-md-5">
                       <x-input.datepicker
-                              name="start_date"
-                              :value="$item->start_date"
-                              required="true"
+                          name="start_date"
+                          :value="$item->start_date"
+                          required="true"
                       />
                   </x-form-input>
           </x-form-row>
@@ -133,9 +149,8 @@
 
                   <x-form-input class="col-md-5">
                       <x-input.datepicker
-                              name="start_date"
+                              name="completion_date"
                               :value="$item->completion_date"
-                              required="true"
                       />
                   </x-form-input>
           </x-form-row>
@@ -146,11 +161,12 @@
 
                   <x-form-input>
                       <x-input.text
-                              type="url"
-                              :value="$item->url"
-                              input_icon="link"
-                              input_group_addon="left"
-                              placeholder="https://example.com"
+                          name="url"
+                          type="url"
+                          :value="$item->url"
+                          input_icon="link"
+                          input_group_addon="left"
+                          placeholder="https://example.com"
                       />
                   </x-form-input>
           </x-form-row>
@@ -159,12 +175,13 @@
         <!-- Supplier -->
           <x-form-row>
 
+              {{ $item->supplier->id }}
                   <x-form-label>{{ trans('general.supplier') }}</x-form-label>
 
                   <x-form-input>
                       <x-input.select2-ajax
                               name="supplier_id"
-                              :value="$item->supplier ? $item->supplier->id : old('supplier_id')"
+                              :selected="old('supplier_id', ($item->supplier) ? $item->supplier_id : '')"
                               data_endpoint="suppliers"
                               :data_placeholder="trans('general.select_supplier')"
                       />
