@@ -627,7 +627,7 @@
             text: '{{ trans('general.create') }}',
             icon: 'fa fa-plus',
             event () {
-                window.location.href = '{{ route('maintenances.create', ['selected_assets[]' => (isset($asset)) ? $asset->id :'' ]) }}';
+                window.location.href = '{{ route('maintenances.create', ['asset_id' => (isset($asset)) ? $asset->id :'' ]) }}';
             },
             attributes: {
                 class: 'btn-info',
