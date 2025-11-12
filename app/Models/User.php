@@ -305,7 +305,7 @@ class User extends SnipeModel implements AuthenticatableContract, AuthorizableCo
 
         // The user has no permissions and is not in any groups
         if (($this->permissions == '') || ($this->permissions == 'null')) {
-            return false;
+            return [];
         }
 
         $user_permissions = $this->permissions;
@@ -330,22 +330,25 @@ class User extends SnipeModel implements AuthenticatableContract, AuthorizableCo
 
                    // If the user has an explicit permission set, use that
                    if ($return_explicit) {
+
                        \Log::debug('using explicit');
                        if ($user_permissions[$permission_from_config] == '1') {
                            $effective_permissions_array[$permission_from_config] = 'grant';
                        } elseif ($user_permissions[$permission_from_config] == '-1') {
-                           $effective_permissions_array[$permission_from_config] = 'inherit';
-                       } else {
                            $effective_permissions_array[$permission_from_config] = 'deny';
+                       } else {
+                           $effective_permissions_array[$permission_from_config] = $this->hasAccess($permission_from_config) ? 'inherit-grant' : 'inherit-deny';
+                           // $effective_permissions_array[$permission_from_config] = 'inherit';
                        }
 
                    } else {
-                       $effective_permissions_array[$permission_from_config] = $this->hasAccess($permission_from_config) ? 1 : 0;
+                       $effective_permissions_array[$permission_from_config] = $this->hasAccess($permission_from_config) ? 'grant' : 'deny';
                    }
 
                } else {
                    \Log::debug('fallthrough');
-                   $effective_permissions_array[$permission_from_config] = $this->hasAccess($permission_from_config) ? 1 : 0;
+                   //$effective_permissions_array[$permission_from_config] = 'not in user perms';
+                   $effective_permissions_array[$permission_from_config] = $this->hasAccess($permission_from_config) ? 'inherit-grant' : 'inherit-deny';
                }
                 // $effective_permissions_array[$permission_from_config] = $this->hasAccess($permission_from_config) ? 1 : 0;
             }

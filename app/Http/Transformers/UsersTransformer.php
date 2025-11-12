@@ -68,7 +68,7 @@ class UsersTransformer
                 ] : null,
                 'notes'=> Helper::parseEscapedMarkedownInline($user->notes),
                 'role' => $role,
-                'user_permissions' => $user->getEffectivePermissions(),
+                'user_permissions' => $user->decodePermissions(),
                 'effective_permissions' => $user->getEffectivePermissions('true'),
                 'activated' => ($user->activated == '1') ? true : false,
                 'autoassign_licenses' => ($user->autoassign_licenses == '1') ? true : false,

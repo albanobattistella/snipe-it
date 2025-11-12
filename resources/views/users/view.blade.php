@@ -795,10 +795,31 @@
                        </div>
                        <div class="col-md-9">
                            @if (($user->groups->count() > 0) || ($user->hasIndividualPermissions()))
+
                                @foreach ($user->getEffectivePermissions(true) as $permission_name => $permissions_value)
-                                    <span class="label label-default label-{{ ($permissions_value == '1') ? 'success' : 'danger' }}">
-                                        <x-icon type="{{ ($permissions_value == '1') ? 'checkmark' : 'x' }}" class="text-white" /> {{ trans('permissions.'.str_slug($permission_name).'.name') }}
-                                    </span>
+
+                                   @if($permissions_value=='grant')
+                                       <span class="label label-default label-success">
+                                           <x-icon type="checkmark" class="text-white" />
+                                           {{ trans('permissions.'.str_slug($permission_name).'.name') }}
+                                       </span>
+                                   @elseif($permissions_value=='inherit-grant')
+                                        <span class="label label-default label-warning">
+                                            <x-icon type="inherit" class="text-white" />
+                                            {{ trans('permissions.'.str_slug($permission_name).'.name') }}
+                                         </span>
+                                   @elseif($permissions_value=='inherit-deny')
+                                       <span class="label label-default label-warning">
+                                            <x-icon type="inherit" class="text-white" />
+                                            {{ trans('permissions.'.str_slug($permission_name).'.name') }}
+                                         </span>
+                                   @elseif($permissions_value=='deny')
+                                         <span class="label label-default label-danger">
+                                            <x-icon type="x" class="text-white" />
+                                            {{ trans('permissions.'.str_slug($permission_name).'.name') }}
+                                         </span>
+                                   @endif
+
                                @endforeach
                            @else
                                --
