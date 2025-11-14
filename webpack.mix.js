@@ -135,6 +135,7 @@ mix
             './node_modules/bootstrap-table/dist/extensions/addrbar/bootstrap-table-addrbar.js',
             './node_modules/bootstrap-table/dist/extensions/print/bootstrap-table-print.min.js',
             './node_modules/bootstrap-table/dist/extensions/custom-view/bootstrap-table-custom-view.js',
+            './node_modules/bootstrap-table/dist/extensions/multiple-sort/bootstrap-table-multiple-sort.js',
             './resources/assets/js/extensions/jquery.base64.js',
             './node_modules/tableexport.jquery.plugin/tableExport.min.js',
             './node_modules/tableexport.jquery.plugin/libs/jsPDF/jspdf.umd.min.js',
