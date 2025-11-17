@@ -46,6 +46,6 @@ return [
     'kit_not_found'                     => 'Kit non trovato',
     'kit_deleted'                       => 'Il kit è stato eliminato con successo',
     'kit_model_updated'                 => 'Il modello è stato aggiornato correttamente',
-    'kit_model_detached'                => 'Model was successfully detached',
+    'kit_model_detached'                => 'Il modello è stato staccato con successo',
     'model_already_attached'            => 'Modello già collegato al kit',
 ];
