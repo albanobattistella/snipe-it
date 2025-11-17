@@ -3,8 +3,8 @@
 return array(
     'asset_categories' 					=> 'Categorie Beni',
     'category_name'  					=> 'Nome Categoria',
-    'email_to_user_upon_checkin' => 'Invia un'e-mail all'utente al momento del check-in.',
-    'email_to_user_upon_checkin_and_checkout' => 'Invia un'e-mail all'utente al momento del check-in/check-out.',
+    'email_to_user_upon_checkin' => 'Invia un'email all'utente al momento del check-in.',
+    'email_to_user_upon_checkin_and_checkout' => 'Invia un'email all'utente al momento del check-in/check-out.',
     'email_to_initiator'                => 'Ricevi un\'email quando l\'utente accetta o rifiuta l\'assegnazione.',
     'checkin_email_notification'        => 'A questo utente verrà inviata un\'email alla Restituzione o Assegnazione.',
     'clone'                             => 'Clona Categoria',
