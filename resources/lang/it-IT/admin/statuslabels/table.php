@@ -14,6 +14,6 @@ return array(
     'status_type'   => 'Tipo di stato',
     'show_in_nav'   => 'Mostra nel nav nav',
     'title'      	=> 'Etichette di Stato',
-    'undeployable'  => 'Non Distribuilbile',
+    'undeployable'  => 'Non Distribuibile',
     'update'      	=> 'Aggiorna Etichetta di Stato',
 );
